@@ -1,45 +1,42 @@
 ﻿<Window x:Class="WpfApp1.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Reverse String" Height="250" Width="400">
-    <Window.Resources>
-        <Style TargetType="Label">
-            <Setter Property="Foreground" Value="#333333"/>
-            <Setter Property="FontFamily" Value="Segoe UI"/>
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Margin" Value="10"/>
-        </Style>
-        <Style TargetType="TextBox">
-            <Setter Property="Foreground" Value="#333333"/>
-            <Setter Property="FontFamily" Value="Segoe UI"/>
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Margin" Value="10"/>
-            <Setter Property="MinHeight" Value="30"/>
-        </Style>
-        <Style TargetType="Button">
-            <Setter Property="Foreground" Value="#FFFFFF"/>
-            <Setter Property="Background" Value="#007ACC"/>
-            <Setter Property="FontFamily" Value="Segoe UI"/>
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Padding" Value="10"/>
-            <Setter Property="Margin" Value="10"/>
-            <Setter Property="MinWidth" Value="80"/>
-        </Style>
-    </Window.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Label Grid.Row="0" Grid.Column="0" Content="Enter text:"/>
-        <TextBox Grid.Row="0" Grid.Column="1" x:Name="InputTextBox"/>
-        <Label Grid.Row="1" Grid.Column="0" Content="Reversed text:"/>
-        <TextBox Grid.Row="1" Grid.Column="1" x:Name="OutputTextBox" IsReadOnly="True"/>
-        <Button Grid.Row="2" Grid.Column="1" Content="Reverse" Click="Button_Click"/>
-    </Grid>
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+Title="Reverse String" Height="250" Width="400">
+<Window.Resources>
+	<Style TargetType="Label">
+		<Setter Property="Foreground" Value="#333333"/>
+		<Setter Property="FontFamily" Value="Segoe UI"/>
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="Margin" Value="10"/>
+	</Style>
+
+	<Style TargetType="TextBox">
+		<Setter Property="Foreground" Value="#333333"/>
+		<Setter Property="FontFamily" Value="Segoe UI"/>
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="Margin" Value="10"/>
+		<Setter Property="MinHeight" Value="30"/>
+	</Style>
+</Window.Resources>
+<Grid>
+	<Grid.RowDefinitions>
+		<RowDefinition Height="Auto"/>
+		<RowDefinition Height="Auto"/>
+	</Grid.RowDefinitions>
+	<Grid.ColumnDefinitions>
+		<ColumnDefinition Width="Auto"/>
+		<ColumnDefinition Width="*"/>
+	</Grid.ColumnDefinitions>
+	<Label Grid.Row="0" Grid.Column="0" Content="Enter text:"/>
+	<TextBox Grid.Row="0" Grid.Column="1" x:Name="InputTextBox" TextChanged="InputTextBox_TextChanged" KeyDown="InputTextBox_KeyDown"/>
+	<Grid Grid.Row="1" Grid.Column="1">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="Auto"/>
+		</Grid.ColumnDefinitions>
+		<TextBox Grid.Column="0" x:Name="OutputTextBox" IsReadOnly="True"/>
+		<Label Grid.Column="1" Margin="10" x:Name="LastKeyPressedLabel" Visibility="Hidden"/>
+	</Grid>
+	<Label Grid.Row="1" Grid.Column="0" Content="Reversed text:"/>
+</Grid>
 </Window>
